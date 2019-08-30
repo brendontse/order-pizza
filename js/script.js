@@ -26,7 +26,7 @@ Pizza.prototype.getprice = function() { // calculate the cost of a specific pizz
     this.price += 2;
   }
 
-  if (this.meat === 'all') { // meat cost
+  if (this.meat === 'every kind of meat') { // meat cost
     this.price += 4;
   } else if (this.meat === 'bacon' || 'chicken' || 'sausage') {
     this.price += 2;
@@ -34,8 +34,15 @@ Pizza.prototype.getprice = function() { // calculate the cost of a specific pizz
     this.price += 1;
   }
 }
-document.ready(function() {
-  $('somethingsomethingform').submit(function(event) {
+
+//returns a specific pizza's information
+Pizza.prototype.pizzaInfo = function() {
+  return this.size + ' ' + this.crust ' ' + this.cheese + ' cheese pizza with ' + this.meat + ' on top. $' + this.price;
+}
+
+$(document).ready(function() {
+  $('#pizza-order').submit(function(event) {
     event.preventDefault();
-  })
-})
+
+  });
+});
