@@ -26,10 +26,12 @@ Pizza.prototype.getprice = function() { // calculate the cost of a specific pizz
     this.price += 2;
   }
 
-  if (this.meat === 'Meat Lover') { // meat cost
-    this.price += 3;
-  } else if (this.meat != 'none') {
+  if (this.meat === 'all') { // meat cost
+    this.price += 4;
+  } else if (this.meat === 'bacon' || 'chicken' || 'sausage') {
     this.price += 2;
+  } else if (this.meat === 'pepperoni') {
+    this.price += 1;
   }
 }
 document.ready(function() {
