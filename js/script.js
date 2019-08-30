@@ -19,9 +19,14 @@ Pizza.prototype.getprice = function() { // calculate the cost of a specific pizz
   } else if (this.crust === 'thin' || 'flatbread')
     this.price = this.price * 1.1;
 }
-if (this.cheese === 'mozerella' || 'cheddar') {
+if (this.cheese === 'cheddar') {
   this.price += 1;
-} else if
+} else if (this.cheese === 'gouda') {
+  this.price += 2;
+}
+if (this.meat === 'pepperoni') {
+
+}
 document.ready(function() {
   $('somethingsomethingform').submit(function(event) {
     event.preventDefault();
