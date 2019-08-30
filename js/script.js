@@ -14,10 +14,14 @@ Pizza.prototype.getprice = function() { // calculate the cost of a specific pizz
     this.price = this.price * 1.25;
   }
 
-
+  if (this.crust === 'thiCC' || 'gluten-free') { //crust cost
+    this.price = this.price * 1.20;
+  } else if (this.crust === 'thin' || 'flatbread')
+    this.price = this.price * 1.1;
 }
-}
-
+if (this.cheese === 'mozerella' || 'cheddar') {
+  this.price += 1;
+} else if
 document.ready(function() {
   $('somethingsomethingform').submit(function(event) {
     event.preventDefault();
