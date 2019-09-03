@@ -1,3 +1,12 @@
-#pizza-info {
+.pizza-info {
   display: none;
+}
+
+.well {
+  background-color: #ff9100
+}
+
+.container {
+  background-color: #e8901d;
+  border: solid black 2px
 }

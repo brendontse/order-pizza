@@ -7,17 +7,18 @@ function Pizza(size, crust, cheese, meat) { // make a pizza
 }
 
 Pizza.prototype.getPrice = function() { // calculate the cost of a specific pizza
-  this.price = 5; // base cost
-  if (this.size === 'S') { // size cost
+  this.price = 7; // base cost
+
+  if (this.size === 'Small') { // size cost
     this.price *= 0.75;
-  } else if (this.size === 'L') {
+  } else if (this.size === 'Large') {
     this.price *= 1.25;
   }
 
-  if (this.crust === 'thiCC' || 'gluten-free') { // crust cost
+  if (this.crust === 'extra thick' || this.crust === 'gluten-free') { // crust cost
+    this.price *= 1.5;
+  } else if (this.crust === 'thin' || this.crust === 'flatbread') {
     this.price *= 1.2;
-  } else if (this.crust === 'thin' || 'flatbread') {
-    this.price *= 1.1;
   }
 
   if (this.cheese === 'cheddar') { // cheese cost
@@ -28,22 +29,26 @@ Pizza.prototype.getPrice = function() { // calculate the cost of a specific pizz
 
   if (this.meat === 'all-meat') { // meat cost
     this.price += 4;
-  } else if (this.meat === 'bacon' || 'chicken' || 'sausage') {
+  } else if (this.meat === 'bacon' || this.meat === 'chicken' || this.meat === 'sausage') {
     this.price += 2;
   } else if (this.meat === 'pepperoni') {
     this.price += 1;
   }
+
+  total = total + this.price;
 }
 
-//returns a specific pizza's information
-// Pizza.prototype.getPizzaInfo = function() {
-//   return this.size + ' ' + this.crust ' ' + this.cheese + ' cheese pizza with ' + this.meat + ' on top. $' + this.price;
-// }
+Pizza.prototype.getPizzaInfo = function() { //returns a specific pizza 's information
+  return this.size + ', ' + this.crust + ' ' + this.cheese + ' cheese pizza with ' + this.meat + ' on top. $' + this.price;
+}
 
 var showPizzaInfo = function() {
-  $('pizza-info').show();
-
+  $('.pizza-info').show();
+  $('.pizza-info').text(newPizza.getPizzaInfo());
 }
+
+var total = 0
+
 $(document).ready(function() {
   $('#pizza-order').submit(function(event) {
     event.preventDefault();
@@ -51,6 +56,18 @@ $(document).ready(function() {
     var crust = $('input[name=crust]:checked').val();
     var cheese = $('input[name=cheese]:checked').val();
     var meat = $('input[name=meat]:checked').val();
-    console.log(size, crust, cheese, meat);
+
+    var newPizza = new Pizza(size, crust, cheese, meat);
+
+    newPizza.getPrice();
+    console.log(total);
+    $('#pizzas').append('<li><span class="custom-pizza">' + newPizza.getPizzaInfo() + '</span></li>');
+
+
+    document.getElementById("pizza-order").reset();
+
   });
 });
+
+
+/////find out how to get total ??
