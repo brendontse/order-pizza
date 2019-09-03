@@ -36,13 +36,21 @@ Pizza.prototype.getPrice = function() { // calculate the cost of a specific pizz
 }
 
 //returns a specific pizza's information
-Pizza.prototype.pizzaInfo = function() {
-  return this.size + ' ' + this.crust ' ' + this.cheese + ' cheese pizza with ' + this.meat + ' on top. $' + this.price;
-}
+// Pizza.prototype.getPizzaInfo = function() {
+//   return this.size + ' ' + this.crust ' ' + this.cheese + ' cheese pizza with ' + this.meat + ' on top. $' + this.price;
+// }
 
+var showPizzaInfo = function() {
+  $('pizza-info').show();
+
+}
 $(document).ready(function() {
   $('#pizza-order').submit(function(event) {
     event.preventDefault();
-
+    var size = $('input[name=size]:checked').val();
+    var crust = $('input[name=crust]:checked').val();
+    var cheese = $('input[name=cheese]:checked').val();
+    var meat = $('input[name=meat]:checked').val();
+    console.log(size, crust, cheese, meat);
   });
 });
